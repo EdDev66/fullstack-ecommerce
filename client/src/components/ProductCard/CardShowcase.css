@@ -1,0 +1,26 @@
+.product-container {
+    width: 250px;
+    height: 320px;
+    padding: 20px 60px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.product-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-price {
+    font-size: 1.2em;
+    margin: 10px auto !important;
+    font-weight: bold;
+}
+
+.showcase-image {
+    width: 100px;
+    height: 120px;
+}

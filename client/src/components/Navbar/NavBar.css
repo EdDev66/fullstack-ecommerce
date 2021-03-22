@@ -1,0 +1,11 @@
+.navbar-sizing {
+    border-bottom: 1px solid #000;
+    user-select: none;
+}
+
+.navLogo {
+    color: #A52A2A;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-size: 2rem;
+}
