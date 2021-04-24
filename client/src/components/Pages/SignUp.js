@@ -2,9 +2,9 @@ import React from 'react';
 import SignUpForm from '../Authentication/SignUpForm';
 
 
-const SignUp = () => {
+const SignUp = (props) => {
     return (
-        <SignUpForm />
+        <SignUpForm location={props.location} history={props.history}/>
     )
 }
 

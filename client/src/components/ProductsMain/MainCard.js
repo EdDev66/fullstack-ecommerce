@@ -1,17 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import './ProductsMain.css';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import ProductsContext from '../../context/ProductsContext';
 
 const MainCard = props => {
-    const productsContext = useContext(ProductsContext);
-
-    const { currentProduct, fetchSingleProduct, loading } = productsContext;
- 
 
    const fetchProduct = () => {
-        fetchSingleProduct(props.id);
+        
    }
     
     return (

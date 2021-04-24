@@ -14,12 +14,14 @@ const SlideShow = props => {
         <div className="slideshow-container">
         <h2 className="slideshow-heading">Featured Products</h2>
 
-        {/* ============================================= */}
-        {/* Add media query to only show 1 product on mobile */}
-
         <Carousel breakPoints={breakpoint}>
             {props.products.map(product => (
-                <CardShowcase title={product.title} image={product.image} price={product.price}/>
+                <CardShowcase 
+                id={product._id}
+                key={product._id}
+                title={product.title} 
+                image={product.image} 
+                price={product.price}/>
             ))}
         </Carousel>
         </div>

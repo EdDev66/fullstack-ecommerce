@@ -1,31 +1,46 @@
-import React, { Fragment, useEffect, useContext } from 'react';
-import ProductsContext from '../../context/ProductsContext';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../../actions/productActions';
 
+import Meta from '../Meta';
+import { Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import SlideShow from '../Slideshow/SlideShow';
+import Paginate from '../Paginate';
 import ProductsMain from '../ProductsMain/ProductsMain';
 
-const Home = () => {
-    const productsContext = useContext(ProductsContext);
+const Home = ({ match }) => {
+    const keyword = match.params.keyword
 
-    const { fetchData, products, displayProducts, loading } = productsContext;
+    const pageNumber = match.params.pageNumber || 1
+
+    const dispatch = useDispatch();
+
+    const productList = useSelector(state => state.productList);
+    const { loading, error, products, displayProducts, pages, page } = productList
 
     useEffect(() => {
-        fetchData();
-      }, [])
+        dispatch(listProducts(keyword, pageNumber));
+      }, [dispatch, keyword, pageNumber])
 
-      
 
     return (
+        
         <Fragment>
-           {loading ? <Spinner /> : (
+            <Meta />
+            {loading ? <Spinner /> : error ? <h3>{error}</h3> : (
             <Fragment>
-                <SlideShow products={displayProducts}/>
-                <ProductsMain products={products}/> 
+               {!keyword ? <SlideShow products={displayProducts}/> : <Link to='/' className='btn btn-light'>Go Back</Link>}
+                <ProductsMain products={products}/>
             </Fragment>
-           )}
-           
-        </Fragment>
+            )}
+            <Col className="offset-md-6 mt-4">
+                <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''} />
+            </Col>
+         </Fragment>
+        
     )
 }
 

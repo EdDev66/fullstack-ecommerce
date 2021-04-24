@@ -16,19 +16,14 @@ const ProductsMain = props => {
                 <Col className="col-md-9 col-lg-10">
                     <Row className="justify-content-around">
                     {props.products.map(product => (
-                    <Col className="col-lg-2 col-md-3 card-container col-sm-6 col-12">
+                    <Col key={product._id} className="col-lg-2 col-md-3 card-container col-sm-6 col-12">
                         <MainCard
-                        key={product.id}
-                        id={product.id}
+                        id={product._id}
                         title={product.title} 
                         image={product.image} 
                         price={`$${product.price}`}/>
                     </Col>
                     ))}
-                    <Col className="col-12">
-                        <span>Previous </span>
-                        <span>Next</span>
-                    </Col>
                     </Row>
                 </Col>
             </Row>

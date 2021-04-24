@@ -1,0 +1,21 @@
+import React from 'react'
+import { Helmet } from 'react-helmet';
+
+const Meta = ({ title, description, keywords }) => {
+    return (
+        <Helmet>
+            <title>{title}</title>
+            <meta name='description' content={description}/>
+            <meta name='keyword' content={keywords}/>
+        </Helmet>
+    )
+}
+
+Meta.defaultProps = {
+    title: 'RedDragon',
+    description: 'Best shop for all your needs',
+    keywords: 'items, buy items for cheap'
+}
+
+
+export default Meta
